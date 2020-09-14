@@ -316,26 +316,26 @@
                         case KEY.DOWN:
                             gameList.stopGamePickerTimer();
                             break;
-                        case KEY.JOIN:
-                        case KEY.A:
-                        case KEY.B:
-                        case KEY.X:
-                        case KEY.Y:
+                        // case KEY.JOIN:
+                        // case KEY.A:
+                        // case KEY.B:
+                        // case KEY.X:
+                        // case KEY.Y:
                         case KEY.START:
-                        case KEY.SELECT:
+                        // case KEY.SELECT:
                             startGame();
                             break;
                         case KEY.QUIT:
-                            popup('You are already in menu screen!');
+                            // popup('You are already in menu screen!');
                             break;
                         case KEY.LOAD:
-                            popup('Lets play to load game!');
+                            // popup('Lets play to load game!');
                             break;
                         case KEY.SAVE:
-                            popup('Lets play to save game!');
+                            // popup('Lets play to save game!');
                             break;
                         case KEY.STATS:
-                            event.pub(STATS_TOGGLE);
+                            // event.pub(STATS_TOGGLE);
                             break;
                         case KEY.SETTINGS:
                             break;

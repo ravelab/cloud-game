@@ -4,6 +4,7 @@
  */
 const gameList = (() => {
     // state
+    let allGames = [];
     let games = [];
     let gameIndex = 1;
     let gamePickTimer = null;
@@ -15,8 +16,22 @@ const gameList = (() => {
     const MENU_TOP_POSITION = 102;
     let menuTop = MENU_TOP_POSITION;
 
+    const filterInput = document.getElementById('room-txt')
+    filterInput.addEventListener('keyup', (e) => {
+        setFilter(e.target.value);
+        show();
+    });
+
     const setGames = (gameList) => {
-        games = gameList.sort((a, b) => a > b ? 1 : -1);
+        games = allGames = gameList;
+    };
+
+    const setFilter = (text) => {
+        if (text) {
+            games = allGames.sort((a, b) => a > b ? 1 : -1).filter(game => game.toLowerCase().includes(text));
+        } else {
+            games = allGames;
+        }
     };
 
     const render = () => {
@@ -106,6 +121,7 @@ const gameList = (() => {
         show: show,
         hide: hide,
         set: setGames,
-        getCurrentGame: () => games[gameIndex]
+        getCurrentGame: () => games[gameIndex],
+        setFilter: setFilter
     }
 })($, event, log);

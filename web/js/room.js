@@ -6,7 +6,7 @@ const room = (() => {
     let id = '';
 
     // UI
-    const roomLabel = $('#room-txt');
+    // const roomLabel = $('#room-txt');
 
     // !to rewrite
     const parseURLForRoom = () => {
@@ -38,11 +38,11 @@ const room = (() => {
         getId: () => id,
         setId: (id_) => {
             id = id_;
-            roomLabel.val(id);
+            // roomLabel.val(id);
         },
         reset: () => {
             id = '';
-            roomLabel.val(id);
+            // roomLabel.val(id);
         },
         save: (roomIndex) => {
             localStorage.setItem('roomID', roomIndex);
