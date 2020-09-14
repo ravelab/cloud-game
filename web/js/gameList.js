@@ -9,6 +9,45 @@ const gameList = (() => {
     let gameIndex = 1;
     let gamePickTimer = null;
 
+    const favorites = {
+        'pacman': 'Pac-Man',
+        'gberet': 'Green Beret',
+        'nrallyx': '迷魂車',
+        'ddragon': '雙截龍',
+        '1943': '1943',
+        'arkanoid': '打磚塊', 
+        'dynwarj': '三國志',
+        'dkong': 'Donkey Kong',
+        'rtype': 'R-Type',
+        'lkage': '影子傳說',
+        'raiden': 'Raiden',
+        'twincobr': '究極虎',
+        'nkdodge': '熱血高校',
+        'sfj': '快打旋風',
+        'bublbobl': '泡泡龍',
+        'altbeastj': '獸王記',
+        'goldnaxej': '戰斧',
+        'galaxian': '小蜜蜂',
+        'wofj': '三國志２',
+        'nspiritj': '最後忍道',
+        'shisen': '四川省：女子寮篇',
+        'sf2j': '快打旋風２',
+        'shinobi': '忍',
+        'nbajam': 'NBA JAM',
+        // 'gladiatr': '黃金城',
+        'mspacman': 'Ms Mac-Man',
+        'frogger': 'Frogger',
+        'digdug': 'Dig Dug',
+        'tmnt': 'Teenage Mutant Ninja Turtles',
+        'Super Mario Bros': 'Super Mario Bros',
+    };
+    
+    let reverseFavorites = {};
+    Object.keys(favorites).forEach(function(key) {
+        const value = favorites[key];
+        reverseFavorites[value] = key;
+      });
+
     // UI
     const listBox = $('#menu-container');
     const menuItemChoice = $('#menu-item-choice');
@@ -23,12 +62,16 @@ const gameList = (() => {
     });
 
     const setGames = (gameList) => {
-        games = allGames = gameList;
+        allGames = gameList.map(game => favorites[game] || game).sort((a, b) => a > b ? 1 : -1);
+        games = allGames.filter(game => reverseFavorites[game]);
+
+        console.log('allGames: ', allGames);
+        console.log('games: ', games);
     };
 
     const setFilter = (text) => {
         if (text) {
-            games = allGames.sort((a, b) => a > b ? 1 : -1).filter(game => game.toLowerCase().includes(text));
+            games = allGames.filter(game => game.toLowerCase().includes(text));
         } else {
             games = allGames;
         }
@@ -111,6 +154,11 @@ const gameList = (() => {
         pickGame(index);
     };
 
+    const getCurrentGame = () => {
+        const game = games[gameIndex];
+        return reverseFavorites[game] || game;
+    };
+
     event.sub(MENU_PRESSED, onMenuPressed);
     event.sub(MENU_RELEASED, onMenuReleased);
 
@@ -121,7 +169,7 @@ const gameList = (() => {
         show: show,
         hide: hide,
         set: setGames,
-        getCurrentGame: () => games[gameIndex],
+        getCurrentGame,
         setFilter: setFilter
     }
 })($, event, log);
