@@ -10,17 +10,17 @@ const gameList = (() => {
     let gamePickTimer = null;
 
     const favorites = {
-        'pacman': 'Pac-Man',
-        'gberet': 'Green Beret',
+        'pacman': 'Pac-Man (A)',
+        'gberet': 'Green Beret (A)',
         'nrallyx': '迷魂車',
         'ddragon': '雙截龍',
-        '1943': '1943',
+        '1943': '1943 (A)',
         'arkanoid': '打磚塊', 
         'dynwarj': '三國志',
-        'dkong': 'Donkey Kong',
-        'rtype': 'R-Type',
+        'dkong': 'Donkey Kong (A)',
+        'rtype': 'R-Type (A)',
         'lkage': '影子傳說',
-        'raiden': 'Raiden',
+        'raiden': 'Raiden (A)',
         'twincobr': '究極虎',
         'nkdodge': '熱血高校',
         'sfj': '快打旋風',
@@ -33,13 +33,20 @@ const gameList = (() => {
         'shisen': '四川省：女子寮篇',
         'sf2j': '快打旋風２',
         'shinobi': '忍',
-        'nbajam': 'NBA JAM',
+        'nbajam': 'NBA JAM (A)',
         // 'gladiatr': '黃金城',
-        'mspacman': 'Ms Mac-Man',
-        'frogger': 'Frogger',
-        'digdug': 'Dig Dug',
-        'tmnt': 'Teenage Mutant Ninja Turtles',
+        'mspacman': 'Ms Mac-Man (A)',
+        'frogger': 'Frogger (A)',
+//        'digdug': 'Dig Dug',
+        'tmnt': '忍者龜',
         'Super Mario Bros': 'Super Mario Bros',
+        'Super Bomberman 3': 'Super Bomberman 3',
+        'Super Tetris 3': 'Super Tetris 3',
+        'Rainbow Islands - The Story of Bubble Bobble 2': 'Rainbow Islands - The Story of Bubble Bobble 2',
+        'Super Dodge Ball': 'Super Dodge Ball',
+        'Mortal Kombat': 'Mortal Kombat',
+        'Teenage Mutant Ninja Turtles IV - Turtles in Time': 'Teenage Mutant Ninja Turtles IV - Turtles in Time',
+        'Contra': 'Contra',
     };
     
     let reverseFavorites = {};
@@ -64,9 +71,6 @@ const gameList = (() => {
     const setGames = (gameList) => {
         allGames = gameList.map(game => favorites[game] || game).sort((a, b) => a > b ? 1 : -1);
         games = allGames.filter(game => reverseFavorites[game]);
-
-        console.log('allGames: ', allGames);
-        console.log('games: ', games);
     };
 
     const setFilter = (text) => {

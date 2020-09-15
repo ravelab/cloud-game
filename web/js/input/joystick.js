@@ -241,8 +241,11 @@ const joystick = (() => {
             }
         }
 
+        // TODO: 
+        // mac, DS4: '54c-9cc-Wireless Controller'
+
         // works for many different game pads (DS4, XBOX one)
-        if (gamepad.id.includes('GAMEPAD')) {
+        if (gamepad.buttons.length > 15) {
             if (browser === 'chrome') {
                 joystickMap = {
                     0: KEY.B,
