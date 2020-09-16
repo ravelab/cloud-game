@@ -241,11 +241,11 @@ const joystick = (() => {
             }
         }
 
-        // TODO: 
-        // mac, DS4: '54c-9cc-Wireless Controller'
-
-        // works for many different game pads (DS4, XBOX one)
-        if (gamepad.buttons.length > 15) {
+        // Mac, XBox:
+        //  one bluetooth, Xbox Wireless Controller (STANDARD GAMEPAD Vendor: 045e Product: 02fd). 17 buttons, 4 axes.
+        // Mac, DS4: 
+        //  Wireless Controller (STANDARD GAMEPAD Vendor: 054c Product: 09cc). 18 buttons, 4 axes.
+        if (gamepad.buttons.length > 16) {
             if (browser === 'chrome') {
                 joystickMap = {
                     0: KEY.B,
@@ -258,13 +258,18 @@ const joystick = (() => {
                     7: KEY.SAVE,
                     8: KEY.SELECT,
                     9: KEY.START,
-                    10: KEY.DTOGGLE,
+                    10: KEY.L3,
                     11: KEY.R3,
                     12: KEY.UP,
                     13: KEY.DOWN,
                     14: KEY.LEFT,
-                    15: KEY.RIGHT
+                    15: KEY.RIGHT,
+                    16: KEY.DTOGGLE,
                 };
+
+                if (gamepad.buttons.length > 17) {
+                    joystickMap[17] = KEY.R2;
+                }
             }
         }
 

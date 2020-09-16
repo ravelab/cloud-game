@@ -36,14 +36,14 @@ const rtcp = (() => {
             inputChannel.onclose = () => log.debug('[rtcp] the input channel has closed');
         }
 
-        //addVoiceStream(connection)
+        addVoiceStream(connection)
 
         connection.oniceconnectionstatechange = ice.onIceConnectionStateChange;
         connection.onicegatheringstatechange = ice.onIceStateChange;
         connection.onicecandidate = ice.onIcecandidate;
-        // connection.ontrack = event => {
-        //     mediaStream.addTrack(event.track);
-        // }
+        connection.ontrack = event => {
+            mediaStream.addTrack(event.track);
+        }
 
     };
 
@@ -51,7 +51,8 @@ const rtcp = (() => {
         let stream = null;
 
         try {
-            stream = await navigator.mediaDevices.getUserMedia({video: false, audio: true});
+            // don't request audio, too creepy and doesn't work anyway currently
+            stream = await navigator.mediaDevices.getUserMedia({video: false, audio: false});
 
             stream.getTracks().forEach(function (track) {
                 log.info("Added voice track")

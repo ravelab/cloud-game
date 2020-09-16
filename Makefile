@@ -73,7 +73,8 @@ dev.build-local:
 	go build -o bin/worker ./cmd/worker
 
 dev.run: dev.build-local
-	./bin/coordinator --v=5 &
+	./bin/coordinator --v=5  &
+	./bin/worker --coordinatorhost localhost:8000 &
 	./bin/worker --coordinatorhost localhost:8000
 	
 dev.run-docker:
