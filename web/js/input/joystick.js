@@ -258,8 +258,8 @@ const joystick = (() => {
                     7: KEY.SAVE,
                     8: KEY.SELECT,
                     9: KEY.START,
-                    10: KEY.L3,
-                    11: KEY.R3,
+                    10: KEY.FULL,
+                    11: KEY.MULTITAP,
                     12: KEY.UP,
                     13: KEY.DOWN,
                     14: KEY.LEFT,
@@ -268,7 +268,7 @@ const joystick = (() => {
                 };
 
                 if (gamepad.buttons.length > 17) {
-                    joystickMap[17] = KEY.R2;
+                    joystickMap[17] = KEY.STATS;
                 }
             }
         }

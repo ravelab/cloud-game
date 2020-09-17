@@ -79,7 +79,7 @@
 
     const onLatencyCheckRequest = (data) => {
         popup('Ping check...');
-        const timeoutMs = 2000;
+        const timeoutMs = 20; // let http://localhost:9000/echo time out
 
         Promise.all((data.addresses || [])
             .map(ip => {
